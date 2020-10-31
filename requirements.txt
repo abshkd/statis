@@ -1,0 +1,3 @@
+html5lib==1.1
+Markdown==3.3.3
+pytest==6.1.2
