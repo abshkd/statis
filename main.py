@@ -1,11 +1,13 @@
 from collections.abc import Iterable
 import markdown
 import os
+from sys import argv
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    input_dir: str = 'test'
-    output_dir: str = 'public'
+    args = dict(enumerate(argv))
+    input_dir: str = args.get(1, 'test')
+    output_dir: str = args.get(2, 'public')
     includes_dir: str = 'includes'
 
     # header file
@@ -21,7 +23,6 @@ if __name__ == '__main__':
         footer: str = ""
     file_list: Iterable = os.listdir(input_dir)
     for element in file_list:
-        print(element)
         assert isinstance(element, str)
         md_file = os.path.join(input_dir, element)
         html: str = markdown.markdown(open(md_file, "r").read())
